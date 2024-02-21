@@ -6,12 +6,9 @@ import com.kriens.spring.orderservice.dto.OrderRequest;
 import com.kriens.spring.orderservice.model.Order;
 import com.kriens.spring.orderservice.model.OrderLineItems;
 import com.kriens.spring.orderservice.repository.OrderRepository;
-import lombok.AllArgsConstructor;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.web.reactive.function.client.WebClient;
-import reactor.core.publisher.Mono;
 
 import java.util.Arrays;
 import java.util.List;
