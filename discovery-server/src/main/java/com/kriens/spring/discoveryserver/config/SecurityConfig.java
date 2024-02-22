@@ -26,8 +26,12 @@ public class SecurityConfig {
     @Bean
     public UserDetailsService userDetailsService(){
 
+        //Demo purpose, not plain in production
+        User.UserBuilder user = User.withDefaultPasswordEncoder();
+
+
         InMemoryUserDetailsManager manager = new InMemoryUserDetailsManager();
-        manager.createUser(User.withUsername(username)
+        manager.createUser(user.username(username)
                 .password(password)
                 .roles("USER")
                 .build());
