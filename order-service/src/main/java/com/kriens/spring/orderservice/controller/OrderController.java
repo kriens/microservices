@@ -5,6 +5,7 @@ import com.kriens.spring.orderservice.services.OrderService;
 import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import io.github.resilience4j.retry.annotation.Retry;
 import io.github.resilience4j.timelimiter.annotation.TimeLimiter;
+import io.micrometer.observation.annotation.Observed;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,6 +27,7 @@ public class OrderController {
     @CircuitBreaker(name = "inventory",fallbackMethod = "fallback")
     @TimeLimiter(name = "inventory")
     @Retry(name = "inventory")
+    @Observed
     public CompletableFuture<String> createOrder(@RequestBody OrderRequest orderRequest){
         return CompletableFuture.supplyAsync(()-> orderService.placeOrder(orderRequest));
     }
